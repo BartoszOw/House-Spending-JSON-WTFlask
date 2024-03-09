@@ -27,7 +27,15 @@ class Expenses:
 
     def get(self, id):
         return self.expenses[id]
+    
+    def delete(self, id):
+        self.expenses.remove(id)
+        self.save_all()
 
+    def suma(self):
+        x = sum([i['quantity'] for i in list(self.expenses)])
+        return x
+ 
 expenses = Expenses()
 
 
@@ -58,5 +66,14 @@ class Income:
 
     def get(self, id):
         return self.income[id]
+    
+    def delete(self, id):
+        self.income.remove(id)
+        self.save_all()
+
+    def suma(self):
+        x = sum([i['quantity'] for i in list(self.income)])
+        return x
+    
 
 income = Income()

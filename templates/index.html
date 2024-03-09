@@ -10,6 +10,10 @@
     </style>
 </head>
 <body>
+    <div class="result">
+        <h1>Suma:{{res}}</h1>
+        
+    </div>
     <div class="container-exp">
         <h1>Wydatki</h1>
         <table>
@@ -23,6 +27,7 @@
                     <td>{{expense.title}}</td>
                     <td>{{expense.type}}</td>
                     <td>{{expense.quantity}} zł</td>
+                    <td><input type="button" value="delete"></td>
                 </tr>
             {% endfor %}
         </table>
@@ -55,6 +60,7 @@
                     <td>{{i.title}}</td>
                     <td>{{i.type}}</td>
                     <td>{{i.quantity}} zł</td>
+                    <td><input type="button" value="delete"></td>
                 </tr>
             {% endfor %}
         </table>
