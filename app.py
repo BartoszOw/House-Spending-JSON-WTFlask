@@ -11,6 +11,7 @@ def spending_main():
     form_inc = IncomeForm()
     form_exp = ExpensesForm()
     error = ''
+
     res_exp = expenses.suma()
     res_inc = income.suma()
     res = res_inc - res_exp
@@ -29,13 +30,7 @@ def spending_main():
 
         return redirect(url_for('spending_main'))
     
-
-    
-    
     return render_template('index.html',res=res, form_exp=form_exp, error=error, income=income.all(), form_inc=form_inc, expenses=expenses.all())
-
-            
-
 
 
 if __name__ == '__main__':
