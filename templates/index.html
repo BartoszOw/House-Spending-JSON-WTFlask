@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Spending</title>
+    <style>
+        table,th,td,tr {padding: 5px;}
+        .add-table{border: 1px solid black;}
+    </style>
+</head>
+<body>
+    <div class="container-exp">
+        <h1>Wydatki</h1>
+        <table>
+            <thead>
+                <th>Tytuł</th>
+                <th>Opis</th>
+                <th>Wartość</th>
+            </thead>
+            {% for expense in expenses %}
+                <tr>
+                    <td>{{expense.title}}</td>
+                    <td>{{expense.type}}</td>
+                    <td>{{expense.quantity}} zł</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="exp-add">
+            <h2>Dodaj nowy wydatek</h2>
+            <form action="/" method="post">
+                {{form_exp.hidden_tag()}}
+                <table class="add-table">
+                {% for field in form_exp if field.widget.input_type != 'hidden' %}
+                    <tr>
+                        <th>{{field.label}}{% if field.flags.required %}*{% endif %}</th>
+                        <td>{{field}}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                <input type="submit" value="Dodaj Wydatek" name="exp_btn">
+            </form>
+        </div>
+    </div>
+    <div class="container-inc">
+        <h1>Przychody</h1>
+        <table>
+            <thead>
+                <th>Tytuł</th>
+                <th>Opis</th>
+                <th>Wartość</th>
+            </thead>
+            {% for i in income %}
+                <tr>
+                    <td>{{i.title}}</td>
+                    <td>{{i.type}}</td>
+                    <td>{{i.quantity}} zł</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="inc-add">
+            <h2>Dodaj nowy przychód</h2>
+            <form action="/" method="post">
+                {{form_inc.hidden_tag()}}
+                <table class="add-table">
+                {% for field in form_inc if field.widget.input_type != 'hidden' %}
+                    <tr>
+                        <th>{{field.label}}{% if field.flags.required %}*{% endif %}</th>
+                        <td>{{field}}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                <input type="submit" value="Dodaj Przychody" name="inc_btn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
