@@ -15,10 +15,10 @@
 </head>
 <body>
     <h2> Zmień: </h2>
-    <form method="post" action="{{url_for('exp_details', index=index)}}">
-        {{ form_exp.hidden_tag() }}
+    <form method="post" action="{{url_for('inc_details', index=index)}}">
+        {{ form_inc.hidden_tag() }}
         <table>
-            {% for field in form_exp if field.widget.input_type != 'hidden' %}
+            {% for field in form_inc if field.widget.input_type != 'hidden' %}
                 <tr>
                     <th>{{ field.label }}</th>
                     <td>{{ field }}</td>

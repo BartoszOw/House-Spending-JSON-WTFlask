@@ -20,28 +20,25 @@ class Expenses:
         with open('data/expenses.json', 'w') as f:
             json.dump(self.expenses, f)
 
-    def update(self, id, data):
+    def update(self, index, data):
         data.pop('csrf_token')
-        self.expenses[id] = data
+        self.expenses[index] = data
         self.save_all()
-
+    
     def get_one(self, id):
         return self.expenses[id]
     
 
     def get(self, id):
-        exp = [expense for expense in self.all() if expense == id]
-        if exp:
-            return exp[id]
-        return []
+        for expense in self.expenses:
+            if expense.get('id') == id:
+                return expense
+        return None
     
-    def delete(self, id):
-        exp = self.get(id)
-        if exp:
-            self.expenses.remove(exp)
-            self.save_all()
-            return True
-        return False
+    def delete(self, index):
+        del self.expenses[index]
+        self.save_all()
+
 
     def suma(self):
         x = sum([i['quantity'] for i in list(self.expenses)])
@@ -70,10 +67,15 @@ class Income:
         with open('data/income.json', 'w') as f:
             json.dump(self.income, f)
 
-    def update(self, id, data):
+    def update(self, index, data):
         data.pop('csrf_token')
-        self.income[id] = data
+        self.income[index] = data
         self.save_all()
+    
+    def get_one(self, id):
+        return self.income[id]
+    
+
 
     def get(self, id):
         inc = [income for income in self.all()]

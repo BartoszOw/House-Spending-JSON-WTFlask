@@ -27,7 +27,12 @@
                     <td>{{expense.title}}</td>
                     <td>{{expense.type}}</td>
                     <td>{{expense.quantity}} zł</td> 
-                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
+                    <td>
+                        <form method="post" action="{{ url_for('delete_expense', index=loop.index) }}">
+                            <input type="hidden" name="expense_id" value="{{expense.id}}">
+                            <button type="submit" class="btn-delete" style="background: none; border: none; transform: scale(140%);"><i class="fa-solid fa-xmark" style="color: red;"></i></button>
+                        </form>
+                    </td>
                     <td><a href="/exp/{{loop.index}}"><i class="fa-solid fa-pen-to-square" style="color: green;"></i></a></td>
                 </tr>
             {% endfor %}
@@ -62,8 +67,13 @@
                     <td>{{i.title}}</td>
                     <td>{{i.type}}</td>
                     <td>{{i.quantity}} zł</td>
-                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
-                    <td><i class="fa-solid fa-pen-to-square" style="color: green;"></i></td>
+                    <td>
+                        <form method="post" action="{{ url_for('delete_income', index=loop.index) }}">
+                            <input type="hidden" name="income_id" value="{{income.id}}">
+                            <button type="submit" class="btn-delete" style="background: none; border: none; transform: scale(140%);"><i class="fa-solid fa-xmark" style="color: red;"></i></button>
+                        </form>
+                    </td>
+                    <td><a href="/inc/{{loop.index}}"><i class="fa-solid fa-pen-to-square" style="color: green;"></i></a></td>
                 </tr>
             {% endfor %}
         </table>
