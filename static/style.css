@@ -4,7 +4,7 @@
     padding: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(255, 255, 255);
-    text-shadow: 1px 1px 5px  black;
+    text-shadow: 1px 1px 3px  black;
 }
 .result {
     width: 100vw;
@@ -52,6 +52,11 @@ h2 {
     box-shadow: 1px 1px 20px rgb(255, 255, 255);
     margin-bottom: 30px;
 }
+.exp-add, .inc-add {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
 .formu {
     border: 1px solid black;
@@ -79,4 +84,19 @@ select {
     color: white;
     background-color: black;
 }
+.btn:active {
+    transform: scale(90%);
+    transition: 1ms;
+}
 
+i {
+    box-shadow: none;
+    text-shadow: 1px 1px 1px black;
+}
+i:hover {
+    transform: scale(105%);
+    cursor: pointer;
+}
+i:active {
+    transform: scale(150%);
+}

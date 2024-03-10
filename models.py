@@ -25,12 +25,23 @@ class Expenses:
         self.expenses[id] = data
         self.save_all()
 
-    def get(self, id):
+    def get_one(self, id):
         return self.expenses[id]
     
+
+    def get(self, id):
+        exp = [expense for expense in self.all() if expense == id]
+        if exp:
+            return exp[id]
+        return []
+    
     def delete(self, id):
-        self.expenses.remove(id)
-        self.save_all()
+        exp = self.get(id)
+        if exp:
+            self.expenses.remove(exp)
+            self.save_all()
+            return True
+        return False
 
     def suma(self):
         x = sum([i['quantity'] for i in list(self.expenses)])
@@ -65,11 +76,18 @@ class Income:
         self.save_all()
 
     def get(self, id):
-        return self.income[id]
+        inc = [income for income in self.all()]
+        if inc[id]:
+            return inc[id]
+        return []
     
     def delete(self, id):
-        self.income.remove(id)
-        self.save_all()
+        inc = self.get(id)
+        if inc:
+            self.income.remove(inc)
+            self.save_all()
+            return True
+        return False
 
     def suma(self):
         x = sum([i['quantity'] for i in list(self.income)])

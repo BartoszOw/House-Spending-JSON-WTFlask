@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/35315fd70c.js" crossorigin="anonymous"></script>
     <title>House Spending</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
@@ -18,13 +19,16 @@
                 <th>Tytuł</th>
                 <th>Opis</th>
                 <th>Wartość</th>
+               
             </thead>
             <tbody>
             {% for expense in expenses %}
                 <tr>
                     <td>{{expense.title}}</td>
                     <td>{{expense.type}}</td>
-                    <td>{{expense.quantity}} zł</td>
+                    <td>{{expense.quantity}} zł</td> 
+                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
+                    <td><a href="/exp/{{loop.index}}"><i class="fa-solid fa-pen-to-square" style="color: green;"></i></a></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -58,6 +62,8 @@
                     <td>{{i.title}}</td>
                     <td>{{i.type}}</td>
                     <td>{{i.quantity}} zł</td>
+                    <td><i class="fa-solid fa-xmark" style="color: red;"></i></td>
+                    <td><i class="fa-solid fa-pen-to-square" style="color: green;"></i></td>
                 </tr>
             {% endfor %}
         </table>
