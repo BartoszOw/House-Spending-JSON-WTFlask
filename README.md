@@ -1,3 +1,3 @@
 Aplikacja Obliczająca Wydatki jak i przychody domowe.
 
-Stworzona w Flask za pomocą JSON, FlaskWTF 
+Stworzona w języku Python za pomocą JSON, FlaskWTF, Flask 
